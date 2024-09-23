@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epic Games Dropdown with Animated Background</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <style>
+    /* Custom CSS styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: #000; /* Fallback background */
+    }
+
+    /* Navbar styles */
+    .navbar {
+      position: relative;
+      z-index: 100;
+    }
+
+    /* Fullscreen background image with animation */
+    .full-screen-background {
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: changeBackground 12s infinite; /* Animation that lasts 12 seconds (4 images * 3 sec) */
+    }
+
+    /* Background change animation */
+    @keyframes changeBackground {
+      0% {
+        background-image: url('./game1.jpg'); /* Image 1 */
+      }
+      25% {
+        background-image: url('./game2.jpg'); /* Image 2 */
+      }
+      50% {
+        background-image: url('./game3.jpg'); /* Image 3 */
+      }
+      75% {
+        background-image: url('./game4.jpg'); /* Image 4 */
+      }
+      100% {
+        background-image: url('./game1.jpg'); /* Back to Image 1 */
+      }
+    }
+
+    .content-overlay {
+      background: rgba(0, 0, 0, 0.5); /* Dark overlay for better contrast */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .content-overlay h1 {
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .dropdown-menu {
+      width: 100%; /* Full width */
+      background-color: #202020;
+      position: relative;
+      min-height: 200px; /* Add height to make the background visible */
+      background-size: cover; /* Cover the entire dropdown area */
+      background-position: center; /* Center the background */
+      transition: background-image 0.5s ease; /* Smooth transition */
+    }
+
+    .dropdown-item {
+      color: #ede6e6;
+      display: flex;
+      align-items: center;
+      z-index: 10; /* Keep dropdown items above the background */
+    }
+
+    /* .dropdown-item img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    } */
+
+    .dropdown-item:hover {
+      background-color: rgba(249, 240, 240, 0.6); 
+      color:black;/* Slight hover effect with transparency */
+    }
+
+    /* Make sure the text appears well against the background */
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5); /* Dark overlay for text contrast */
+      z-index: 1;
+    }
+
+    .dropdown-item {
+      position: relative;
+      z-index: 10; /* Text stays on top */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Epic Games</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <!-- Play Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Play
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Fortnite</a></li>
+              <li><a class="dropdown-item" href="#">Rocket League</a></li>
+              <li><a class="dropdown-item" href="#">Fall Guys</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">More Games</a></li>
+            </ul>
+          </li>
+
+          <!-- Create Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Create
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Unreal Engine</a></li>
+              <li><a class="dropdown-item" href="#">Create in Fortnite</a></li>
+              <li><a class="dropdown-item" href="#">MetaHuman</a></li>
+              <li><a class="dropdown-item" href="#">RealityScan</a></li>
+              <li><a class="dropdown-item" href="#">Twinmotion</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">More Tools</a></li>
+            </ul>
+          </li>
+
+          <!-- Discover Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Discover
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Epic Games Store</a></li>
+              <li><a class="dropdown-item" href="#">Epic Online Services</a></li>
+              <li><a class="dropdown-item" href="#">Publish </a></li>
+              <li><a class="dropdown-item" href="#">Fab</a></li>
+              <li><a class="dropdown-item" href="#">Sketchfab</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">More Discoveries</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fullscreen Background Image Section -->
+  <div class="full-screen-background">
+    <div class="content-overlay">
+      <h1>Welcome to Epic Games</h1>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+  <!-- jQuery for handling hover event -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // jQuery for showing dropdown on hover
+    $(document).ready(function() {
+      $('.nav-item.dropdown').hover(
+        function() {
+          // On mouse enter, add show class to dropdown menu
+          $(this).find('.dropdown-menu').addClass('show');
+        },
+        function() {
+          // On mouse leave, remove show class from dropdown menu
+          $(this).find('.dropdown-menu').removeClass('show');
+        }
+      );
+    });
+  </script>
+
+</body>
+</html>
